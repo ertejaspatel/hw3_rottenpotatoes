@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     @sort_by = session[:sort_by]
     @ratings = params[:ratings] || Hash[@all_ratings.zip(@all_ratings.map{|m| 1})]
 
-    if(params[:ratings] == nil)
+    if(params[:ratings]==nill)
 	redirect_to movies_path(sort_by: @sort_by, ratings: @ratings)
     else
      @ratings = params[:ratings] 

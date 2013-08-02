@@ -5,7 +5,7 @@
   - @all_ratings.each do |rating|
     = rating
     = check_box_tag "ratings[#{rating}]",1, ("checked" if session[:ratings].has_key?(rating)) 
-  = submit_tag 'Refresh'
+  = submit_tag 'Refresh',id: "ratings_submit"
 
 %table#movies
   %thead
@@ -20,6 +20,6 @@
         %td= movie.title 
         %td= movie.rating
         %td= movie.release_date
-        %td= link_to "More about #{movie.title}", movie_path(movie)
+        %td= link_to "More about #{movie.title}", movie_path(movie,sort_by: @sort_by, ratings: @ratings)
 
 = link_to 'Add new movie', new_movie_path

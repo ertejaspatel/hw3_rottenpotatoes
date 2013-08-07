@@ -58,7 +58,9 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie.destroy
     flash[:notice] = "Movie '#{@movie.title}' deleted."
-    redirect_to movies_path
+    @sort_by = session[:sort_by]
+    @ratings = session[:ratings]
+    redirect_to movies_path(sort_by: @sort_by, ratings: @ratings)
   end
 
   def sort
